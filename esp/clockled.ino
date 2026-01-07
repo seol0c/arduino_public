@@ -4,7 +4,7 @@
 #include <Adafruit_GFX.h>
 #include <Adafruit_SSD1306.h>
 #include <Adafruit_AHTX0.h>
-// 2025년 12월 9일 받아와서 수정중인 파일임..............................................
+
 // ===== WiFi =====
 const char* WIFI_SSID     = "EM";
 const char* WIFI_PASSWORD = "starcraft";
@@ -14,7 +14,7 @@ const char* WIFI_PASSWORD = "starcraft";
 #define SCREEN_HEIGHT 64
 #define OLED_RESET    -1
 #define SCREEN_ADDRESS 0x3C   
-#define SDA_PIN 6             
+#define SDA_PIN 6
 #define SCL_PIN 7
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
@@ -24,7 +24,7 @@ Adafruit_AHTX0 aht;
 sensors_event_t humidity, temp;
 bool aht_ok = false;
 
-// ===== Time (VN UTC+9) ===== 대한민국 +9
+// ===== Time (KR UTC+9) =====
 const char* ntpServer = "pool.ntp.org";
 const long  gmtOffset_sec = 9 * 3600;
 const int   daylightOffset_sec = 0;
@@ -106,7 +106,7 @@ void loop(){
     if(ok){
       String timeStr = two(ti.tm_hour)+":"+two(ti.tm_min)+":"+two(ti.tm_sec);
       String dateStr = String(WEEKDAY_VI[ti.tm_wday]) + "  " +
-                       two(ti.tm_mday)+"/"+two(ti.tm_mon+1)+"/"+String(ti.tm_year+1900);
+                       String(ti.tm_year+1900)+"/"+two(ti.tm_mon+1)+"/"+two(ti.tm_mday);//    two(ti.tm_mday)+"/"+two(ti.tm_mon+1)+"/"+String(ti.tm_year+1900);
       drawCentered(timeStr, 12, 2);
       drawCentered(dateStr, 38, 1);
     }else{
