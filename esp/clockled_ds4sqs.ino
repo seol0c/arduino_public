@@ -6,8 +6,8 @@
 #include <Adafruit_AHTX0.h>
 
 // ===== WiFi =====
-const char* WIFI_SSID     = "EM";
-const char* WIFI_PASSWORD = "starcraft";
+const char* WIFI_SSID     = "id";
+const char* WIFI_PASSWORD = "password";
 
 // ===== OLED =====
 #define SCREEN_WIDTH 128
